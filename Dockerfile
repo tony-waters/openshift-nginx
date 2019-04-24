@@ -9,7 +9,7 @@ RUN yum -y install nginx && yum -y update; yum clean all
 #RUN echo "This Web server is working." > /var/www/html/index.html
 #EXPOSE 80
 
-ENTRYPOINT ["tail -f /dev/null"]
-#ENTRYPOINT [ "/usr/sbin/httpd" ]
+#ENTRYPOINT ["tail -f /dev/null"]
+ENTRYPOINT [ "/usr/sbin/nginx" ]
 #CMD [ "-D", "FOREGROUND" ]
 
