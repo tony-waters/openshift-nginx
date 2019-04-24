@@ -2,7 +2,9 @@ FROM registry.access.redhat.com/rhel7/rhel
 
 
 # Add Web server, update image, and clear cache
-RUN yum -y install nginx && yum -y update; yum clean all
+RUN yum -y install nginx
+RUN yum -y update
+RUN yum clean all
 
 
 # Add some data to web server
