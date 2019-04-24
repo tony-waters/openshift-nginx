@@ -1,5 +1,5 @@
-FROM registry.access.redhat.com/rhel7
-
+#FROM registry.access.redhat.com/rhel7
+FROM rhscl/s2i-core-rhel7:1
 
 EXPOSE 8080
 EXPOSE 8443
@@ -81,3 +81,4 @@ ENV BASH_ENV=${NGINX_APP_ROOT}/etc/scl_enable \
     PROMPT_COMMAND=". ${NGINX_APP_ROOT}/etc/scl_enable"
 
 #CMD $STI_SCRIPTS_PATH/usage
+CMD nginx -g "daemon off;"

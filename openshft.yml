@@ -25,8 +25,8 @@ spec:
     git:
       uri: https://github.com/tony-waters/openshift-nginx.git
       ref: master
-    sourceSecret:
-      name: git-deploy-key
+#    sourceSecret:
+#      name: git-deploy-key
   strategy:
     type: Docker
     dockerStrategy:
