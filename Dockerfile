@@ -4,10 +4,10 @@ FROM registry.access.redhat.com/rhel7/rhel
 COPY nginx.repo /etc/yum.repos.d/
 
 # Add Web server, update image, and clear cache
+#RUN yum -y update
+#RUN yum -y remove openssl-libs
 RUN yum -y update
-RUN yum -y remove openssl-libs
-RUN yum -y update
-RUN yum -y install nginx
+RUN yum -y install nginx-1.6.3-1
 RUN yum clean all
 
 
