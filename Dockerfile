@@ -8,7 +8,7 @@ COPY nginx.repo /etc/yum.repos.d/
 #RUN yum -y update
 RUN yum --showduplicates list nginx
 RUN yum -y update
-RUN yum -y install nginx-1.8.0
+RUN yum -y install nginx
 RUN yum clean all
 
 
