@@ -11,7 +11,7 @@ RUN yum -y remove openssl-libs
 RUN yum -y update
 #RUN yum install openssl-devel-1.0.1e-60 openssl-libs-1.0.1e-60 openssl-1.0.1e-60
 #RUN yum -y update
-RUN yum -y install nginx
+RUN yum -y install rh-nginx18
 RUN yum clean all
 
 
