@@ -1,9 +1,11 @@
 FROM registry.access.redhat.com/rhel7/rhel
 
 
+COPY nginx.repo /etc/yum.repos.d/
+
 # Add Web server, update image, and clear cache
-RUN yum -y install nginx
 RUN yum -y update
+RUN yum -y install nginx
 RUN yum clean all
 
 
