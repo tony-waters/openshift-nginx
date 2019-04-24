@@ -5,6 +5,8 @@ COPY nginx.repo /etc/yum.repos.d/
 
 # Add Web server, update image, and clear cache
 RUN yum -y update
+RUN yum -y remove openssl-libs
+RUN yum -y update
 RUN yum -y install nginx
 RUN yum clean all
 
