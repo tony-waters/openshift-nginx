@@ -9,7 +9,7 @@ COPY nginx.repo /etc/yum.repos.d/
 #RUN yum --showduplicates list nginx
 #RUN yum install -y openssl-libs
 RUN yum -y update
-RUN yum -y install nginx-1.10.0 --skip-broken
+RUN yum -y install nginx-1.12.2 --skip-broken
 RUN yum clean all
 
 
