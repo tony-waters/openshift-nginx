@@ -7,11 +7,12 @@ COPY nginx.repo /etc/yum.repos.d/
 #RUN yum -y remove openssl-libs
 #RUN yum -y update
 #RUN yum --showduplicates list nginx
+RUN yum list "*nginx*"
 #RUN yum install -y openssl-libs
 RUN yum -y update
 #RUN yum install openssl-devel-1.0.1e-60 openssl-libs-1.0.1e-60 openssl-1.0.1e-60
 #RUN yum -y update
-RUN yum -y install rh-nginx18
+RUN yum -y install rh-nginx
 RUN yum clean all
 
 
