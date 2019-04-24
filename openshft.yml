@@ -1,0 +1,105 @@
+---
+
+kind: ImageStream
+apiVersion: v1
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  lookupPolicy:
+    local: true
+
+
+---
+
+kind: BuildConfig
+apiVersion: v1
+metadata:
+  name: nginx
+  annotations:
+    template.alpha.openshift.io/wait-for-ready: "true"
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/tony-waters/openshift-nginx.git
+      ref: master
+    sourceSecret:
+      name: git-deploy-key
+  strategy:
+    type: Docker
+    dockerStrategy:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: nginx:master
+
+---
+
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  name: nginx
+  annotations:
+    template.alpha.openshift.io/wait-for-ready: "true"
+spec:
+  replicas: 1
+  selector:
+    app: nginx
+    deploymentconfig: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        deploymentconfig: nginx
+    spec:
+#      volumes:
+#        - name: shared-data
+#          emptyDir: {}
+      containers:
+        - name: nginx
+          image: nginx:master
+          imagePullPolicy: Always
+#          volumeMounts:
+#            - name: shared-data
+#              mountPath: /var/www/html/
+          ports:
+            - containerPort: 80
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  type: ClusterIP
+  ports:
+    - name: web
+      port: 80
+  selector:
+    app: nginx
+    deploymentconfig: nginx
+  sessionAffinity: None
+
+---
+
+kind: Route
+apiVersion: v1
+metadata:
+  name: nginx
+labels:
+  private-router: true
+spec:
+  to:
+    kind: Service
+    name: nginx
+  port:
+    targetPort: web
+  wildcardPolicy: None
+
+
+
+
+
