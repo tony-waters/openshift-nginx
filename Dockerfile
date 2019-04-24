@@ -6,7 +6,7 @@
 #
 #
 
-FROM registry.access.redhat.com/rhel8
+FROM registry.access.redhat.com/rhel8-beta/rhel
 
 RUN def install -y nginx
 
