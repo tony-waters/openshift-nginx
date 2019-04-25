@@ -7,6 +7,7 @@ COPY nginx.repo /etc/yum.repos.d/
 #RUN yum -y remove openssl-libs
 #RUN yum -y update
 #RUN yum --showduplicates list nginx
+RUN subscription-manager list --available
 RUN yum list "*nginx*"
 #RUN yum install -y openssl-libs
 RUN yum -y update
