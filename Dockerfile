@@ -22,6 +22,6 @@ FROM registry.access.redhat.com/rhscl/nginx-112-rhel7
 #EXPOSE 80
 
 #ENTRYPOINT ["tail -f /dev/null"]
-ENTRYPOINT [ "/usr/sbin/nginx" ]
+#ENTRYPOINT [ "/usr/sbin/nginx" ]
 #CMD [ "-D", "FOREGROUND" ]
 
