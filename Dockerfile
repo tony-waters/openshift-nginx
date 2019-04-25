@@ -12,7 +12,7 @@ RUN yum list "*nginx*"
 RUN yum -y update
 #RUN yum install openssl-devel-1.0.1e-60 openssl-libs-1.0.1e-60 openssl-1.0.1e-60
 #RUN yum -y update
-RUN yum -y install rh-nginx
+RUN yum -y install nginx-1.16.0
 RUN yum clean all
 
 
